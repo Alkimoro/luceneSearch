@@ -1,0 +1,38 @@
+.showMsgPanelButton{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgb(255,255,255);
+    color: rgb(128, 128, 128);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    border-top: solid 2px var(--bgcolor);
+    transition: all 0.2s linear 0s;
+}
+.showMsgPanelButton:hover{
+    color: rgb(255, 255, 255);
+    background-color: var(--bgcolor);
+    transition: all 0.2s linear 0s;
+}
+.showMsgPanelContent{
+    height: 80px;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: auto;
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    font-weight: bold;
+}

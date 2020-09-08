@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.yyy.dao.tradition.SkuDao">
+    <sql id="tableName"> tb_sku </sql>
+    <sql id="fields"> `id`,`name`,`price`,`num`,`image`,`category_name`,`brand_name`,`spec`,`sale_num` </sql>
+    <sql id="page">
+        <if test=" pageSize != null and pageSize > 0 ">
+            <choose>
+                <when test=" pageIndex != null and pageIndex > 0"> limit (pageIndex-1)*pageSize, pageSize </when>
+                 <otherwise> limit pageSize </otherwise>
+            </choose>
+        </if>
+     </sql>
+    <select id="findByQuery" resultType="Sku">
+        select <include refid="fields"/> from <include refid="tableName"/>
+        <where>
+            <if test=" id != null and id != ''">`id`=#{id}</if>
+            <if test=" name != null and id != ''">`name`=#{name}</if>
+            <if test=" price != null ">`price`=#{price}</if>
+            <if test=" num != null ">`num`=#{num}</if>
+            <if test=" image != null and id != ''">`image`=#{image}</if>
+            <if test=" categoryName != null and id != ''">`categoryName`=#{categoryName}</if>
+            <if test=" brandName != null and id != ''">`brandName`=#{brandName}</if>
+            <if test=" spec != null and id != ''">`spec`=#{spec}</if>
+            <if test=" saleNum != null ">`saleNum`=#{saleNum}</if>
+        </where>
+        <include refid="page"/>
+    </select>
+</mapper>

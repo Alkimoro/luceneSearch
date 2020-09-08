@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/base.css}" media="all">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/plist20131112.css}" media="all">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/list-page-20141009.css}" media="all">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/matscrollbar.css}" media="all">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/pop_compare.css}" media="all">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/msgpanel.css}" media="all">
+    <link rel="shortcut icon" type="image/ico"
+          th:href="@{/img/myicon.ico}">
+    <script type="text/javascript"
+            th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script type="text/javascript"
+            th:src="@{/js/jquery.from.js}"></script>
+    <script type="text/javascript"
+            th:src="@{/js/msgpanel.js}"></script>
+    <script type="text/javascript"
+            th:src="@{/js/TextAnimation.js}"></script>
+    <style id="style-1-cropbar-clipper">/* Copyright 2014 Evernote Corporation. All rights reserved. */
+    @font-face {
+        font-family: PF;//自定义字体名称
+        src: url(@{/fonts/PingFangM.ttf})
+    }
+    :root{
+        --bgcolor: rgb(60,197,138) !important;
+        --shaowcolor: rgba(60,197,138,0.1) !important;
+        --deepshadowcolor: rgba(60,197,138,0.3) !important;
+    }
+
+    input {
+        box-shadow: none !important;
+    }
+
+    input::-webkit-input-placeholder{
+        transition: all 0.2s linear 0s;
+    }
+
+    input:hover::-webkit-input-placeholder {
+        letter-spacing: 5px;
+        transform: translateX(100px);
+        opacity: 0;
+        transition: all 0.2s linear 0s;
+    }
+
+    .en-markup-crop-options {
+        top: 18px !important;
+        left: 50% !important;
+        margin-left: -100px !important;
+        width: 200px !important;
+        border: 2px rgba(255, 255, 255, .38) solid !important;
+        border-radius: 4px !important;
+    }
+
+    .redsoftshdow{
+        box-shadow: 2px 2px 6px 0px var(--shaowcolor);
+    }
+
+    .en-markup-crop-options div div:first-of-type {
+        margin-left: 0px !important;
+    }
+    .hoverShowImgPanel{
+        padding: 10px 0px 10px 0px;
+        cursor: pointer;
+        font-weight: bold;
+        background-color: white !important;
+    }
+    .hoverShowImgPanel div{
+        color: #777777;
+        word-break: keep-all;
+        border: solid 2px var(--bgcolor);
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding: 10px 20px 10px 20px;
+        transition: all 0.2s linear 0s;
+    }
+    .imgPanel{
+        position: fixed;
+        z-index: 100;
+        width: 250px;
+        pointer-events: none;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 2px 2px 6px 0px var(--deepshadowcolor);
+    }
+    .imgPanel img{
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+    .table thead{
+        white-space:nowrap;
+    }
+    .table thead tr th{
+        border: solid 10px transparent;
+        cursor: pointer;
+        transition: all 0.2s linear 0s;
+    }
+    .table tbody tr td{
+        word-wrap: break-word;
+        word-break: break-all;
+        cursor: pointer;
+        overflow: auto;
+        border: solid 10px transparent;
+        transition: all 0.2s linear 0s;
+    }
+    .table thead tr th:hover,.table tbody tr td:hover,.hoverShowImgPanel div:hover{
+        background-color: var(--bgcolor);
+        color: rgb(255,255,255);
+        transition: all 0.2s linear 0s;
+    }
+    .tableNoData{
+        font-size: 20px;
+        color: #80808066;
+        font-weight: 600;
+        text-align: center;
+        margin: 30px 0px 30px 0px;
+        height: auto;
+    }
+    .table {
+        padding-left: 60px;
+        padding-right: 60px;
+        text-align: left;
+        width: 100%;
+    }
+    </style>
+</head>
+<body class="root61 bodymatscrollbar" style="font-family: PF,sans-serif !important;">
+<div id="shortcut-2013">
+    <div class="w">
+        <ul class="fl lh">
+            <li class="fore1 ld"><b></b><a href="#" rel="nofollow">LuceneSearch</a></li>
+        </ul>
+        <ul class="fr lh">
+            <li class="fore1" id="loginbar">
+                您好，欢迎访问！
+                <span style="font-weight: 700;margin-left: 10px;margin-right: 10px;transform: translateY(-1px);display: inline-block;">|</span>
+                <span>作者：尹逸越[2220172152]</span>
+            </li>
+        </ul>
+        <span class="clr"></span>
+    </div>
+</div><!--shortcut end-->
+
+<!--搜索框、导航栏部分-->
+<div id="o-header-2013">
+    <div class="w" id="header-2013">
+        <div id="logo-2013" class="ld" style="transform: translateY(-10px);">
+            <a href="https://lucene.apache.org" hidefocus="true">
+                <img th:src="@{/img/newlogo.png}" width="159" height="50" alt="Lucene">
+            </a>
+        </div>
+        <!--logo end-->
+        <div id="search-2013">
+            <div class="i-search ld" style="box-shadow: 3px 4px 7px 0px var(--shaowcolor);">
+                <ul id="shelper" class="hide"></ul>
+                <form id="actionForm" action="sku/querySkuVOByLucene" method="POST">
+                    <div class="form">
+                        <input type="text" class="text"
+                               id="queryString" placeholder="请输入关键字搜索" />
+                        <input type="button" value="搜索" class="button" onclick="mainQuery()" />
+                        <input type="text" name="queryString" style="display: none" />
+                        <input type="number" name="minPrice" style="display: none" />
+                        <input type="number" name="maxPrice" style="display: none" />
+                        <input type="number" name="pageIndex" style="display: none" />
+                        <input type="number" name="pageSize" style="display: none" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--header end-->
+    <div class="w">
+        <div id="nav-2013" class="color" style="box-shadow:3px 4px 7px 0px var(--shaowcolor);"></div>
+    </div>
+</div>
+<div class="w">
+    <div class="breadcrumb" style="position: relative" id="totalNumView">
+        <span>当前条目数：</span>
+        <span class="textAnimationHelper"></span>
+        <span style="position: absolute;left: 135px;top: 10px">0</span>
+    </div>
+</div>
+
+<!--主体部分：各个商品的信息-->
+<div class="w main">
+    <div class="right-extra redsoftshdow">
+        <div id="select" clstag="thirdtype|keycount|thirdtype|select" class="m">
+            <div class="mt">
+                <h1>
+                    搜索过滤 -<strong>&nbsp;商品筛选</strong>
+                </h1>
+            </div>
+            <div class="mc attrs">
+                <div data-id="100002" class="prop-attrs">
+                    <div class="attr">
+                        <div class="a-key">价格：</div>
+                        <div class="a-values">
+                            <div class="v-fold">
+                                <ul class="f-list">
+                                    <li><a href="javascript:queryByPriceRange(0,500)">0-500</a></li>
+                                    <li><a href="javascript:queryByPriceRange(500,1000)">500-1000</a></li>
+                                    <li><a href="javascript:queryByPriceRange(1000,5000)">1000-5000</a></li>
+                                    <li><a href="javascript:queryByPriceRange(5000,10000)">5000-10000</a></li>
+                                    <li><a href="javascript:queryByPriceRange(10000,50000)">10000-50000</a></li>
+                                    <li><a href="javascript:queryByPriceRange(50000,100000)">50000-100000</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt">
+                <h1>
+                    商品详情 -<strong>&nbsp;商品列表</strong>
+                </h1>
+            </div>
+            <div style="overflow-x: scroll;line-height: normal;max-height: 500px;" class="matscrollbar">
+                <table id="table" class="table">
+                    <thead>
+                        <tr></tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="tableNoData">暂无数据</div>
+            </div>
+        </div>
+        <div id="filter">
+            <div class="cls"></div>
+            <div class="fore1">
+                <dl class="activity">
+                    <dd></dd>
+                </dl>
+                <div class="pagin pagin-m">
+                    <span class="text" id="tablePage"><i>1</i>/<i>1</i></span>
+                    <a href="javascript:changePage(-1)" class="prev">上一页<b></b></a>
+                    <a href="javascript:changePage(1)" class="next">下一页<b></b></a>
+                </div>
+                <div class="total">
+			        <span>共<strong>0</strong>个商品</span>
+                </div>
+                <span class="clr"></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="left">
+        <div id="sortlist" clstag="thirdtype|keycount|thirdtype|sortlist"
+             class="m redsoftshdow">
+            <div class="mc">
+                <div class="item current">
+                    <h3 style="font-weight: bold;">快捷搜索</h3>
+                    <ul style="overflow-y: scroll;max-height: 190px;" class="matscrollbar">
+                        <li onclick="executeQuery(true,'华为')">华为</li>
+                        <li onclick="executeQuery(true,'中兴')">中兴</li>
+                        <li onclick="executeQuery(true,'vivo')">vivo</li>
+                        <li onclick="executeQuery(true,'全面屏')">全面屏</li>
+                        <li onclick="executeQuery(true,'防蓝光')">防蓝光</li>
+                        <li onclick="executeQuery(true,'3GB+32GB')">3GB+32GB</li>
+                        <li onclick="executeQuery(true,'拉杆箱')">拉杆箱</li>
+                        <li onclick="executeQuery(true,'ARNO')">ARNO</li>
+                        <li onclick="executeQuery(true,'努比亚')">努比亚</li>
+                        <li onclick="executeQuery(true,'4G手机')">4G手机</li>
+                        <li onclick="executeQuery(true,'移动')">移动</li>
+                        <li onclick="executeQuery(true,'珍珠屏')">珍珠屏</li>
+                        <li onclick="executeQuery(true,'森马（Semir）')">森马（Semir）</li>
+                        <li onclick="executeQuery(true,'高腰铅笔裤女')">高腰铅笔裤女</li>
+                        <li onclick="executeQuery(true,'锤子（smartisan）')">锤子（smartisan）</li>
+                        <li onclick="executeQuery(true,'高腰加厚喇叭裤')">高腰加厚喇叭裤</li>
+                    </ul>
+                </div>
+                <div class="item current">
+                    <h3 style="font-weight: bold;border-top: 2px solid var(--bgcolor);">历史记录</h3>
+                    <ul id="searchHistoryView" style="overflow-y: scroll;max-height: 300px;" class="matscrollbar">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="limitBuy">
+            <div id="limitbuy9199"
+                 clstag="thirdtype|keycount|thirdtype|limitbuy536"
+                 class="m limitbuy hide">
+                <div class="mt">
+                    <h2>服饰鞋帽</h2>
+                </div>
+            </div>
+        </div>
+        <div id="ad_left" reco_id="6" class="m m0 hide"></div>
+        <div id="weekRank" clstag="thirdtype|keycount|thirdtype|mrank"
+             class="m rank  redsoftshdow">
+            <div class="mt">
+                <h2>基于Lucene构建</h2>
+            </div>
+            <div class="mc">
+            </div>
+        </div>
+    </div><!--<div class="left">-->
+
+    <span class="clr"></span>
+    <div id="Collect_Tip" class="Tip360 w260"></div>
+
+</div><!--<div class="w main">-->
+
+<div class="w">
+    <div id="service-2013">
+        <span class="clr"></span>
+    </div>
+</div><!-- service end -->
+<div class="imgPanel" style="display: none"><img src="#" /></div>
+</body>
+<script>
+    $(document).ready(function(){
+        $("#queryString").change(function(e){
+            let queryString=$("#actionForm #queryString")[0].value;
+            $("#actionForm input[name='queryString']").attr("value",queryString);
+        });
+    });
+    $("#table tbody").on("mouseover","tr .hoverShowImgPanel div",function(e){
+        let x=$(this).offset().left-$(document).scrollLeft()+160;
+        let y=$(this).offset().top-$(document).scrollTop();
+        let imgEle=$(".imgPanel");
+        imgEle.finish();
+        let imgSrc=$(this).parent().attr("imgSrc");
+        imgEle.find("img").attr("src",imgSrc);        //调整位置
+        let windowHeight=$(window).height();
+        let eleHeight=parseInt(imgEle.css("height"));
+        if(y+eleHeight+100>=windowHeight){
+            let oldY=y;
+            y=y-(y+eleHeight+100-windowHeight);
+            y=Math.max(y,oldY-eleHeight);
+        }
+        imgEle.css({display:"block",left:x+"px",top:y-50+"px",opacity: 0});
+        imgEle.animate({opacity:1,top:y+"px"},500);
+    });
+    // $("#table tbody").on("mousemove","tr .hoverShowImgPanel div",function(e){
+    //     let x=e.clientX+20;
+    //     let y=e.clientY+30;
+    //     let imgEle=$(".imgPanel");
+    //     imgEle.css({display:"block",left:x+"px",top:y+"px"});
+    // });
+    $("#table tbody").on("mouseout","tr .hoverShowImgPanel div",function(e){
+        let imgEle=$(".imgPanel");
+        imgEle.finish();
+        let y=parseInt(imgEle.css("top"))-50;
+        imgEle.animate({top:y+"px",opacity:0},500,function (e) {
+            imgEle.css({display:"none",left:"0px",top:"0px"});
+        })
+    });
+    const maxSearchHistoryRecordNum=60;
+    const tableStructure = {
+        "id": {"name": "ID", "show": true,"type":"ID"},
+        "name": {"name": "名称", "show": true},
+        "price": {"name": "价格（元）", "show": true},
+        "num": {"name": "库存数量", "show": false},
+        "image": {"name": "商品图片", "show": true,"type":"image"},
+        "categoryName": {"name": "类目名称", "show": true},
+        "brandName": {"name": "品牌名称", "show": true},
+        "spec": {"name": "规格", "show": false},
+        "saleNum": {"name": "销量", "show": false},
+    };
+    function showTableHeader() {
+        const row = $("#table thead tr");
+        for(const ele in tableStructure){
+            if(tableStructure[ele].show) {
+                row.append("<th>" + tableStructure[ele].name + "</th>");
+            }
+        }
+    }
+    function resetFormValue() {
+        const eles = $("#actionForm input[style='display: none'][name!='queryString']");
+        for(let i=0; i<eles.length; i++){
+            $(eles[i]).attr("value",null);
+        }
+    }
+    function mainQuery() {
+        executeQuery(true);
+    }
+    function executeQuery(addSearchHistory,queryString) {
+        let curQueryString=queryString;
+        if(queryString==null||queryString.trim()===""){
+            curQueryString=$("#actionForm input[name='queryString']").attr("value");
+        }else{
+            $("#actionForm input[name='queryString']").attr("value",curQueryString);
+        }
+        if(addSearchHistory){
+            executeAddSearchHistory(curQueryString);
+        }
+        resetFormValue();
+        //执行查询
+        submitQuery();
+    }
+
+    function submitQuery() {
+        let options= {
+            success: function (data) {
+                console.log(data);
+                showData(data);
+            }
+        };
+        //提交表单
+        $("#actionForm").ajaxSubmit(options);
+    }
+
+    function executeAddSearchHistory(queryString) {
+        if($("#searchHistoryView li").length<=maxSearchHistoryRecordNum) {
+            let appendString = "<li onclick=\'executeQuery(false,\"" + queryString + "\")\'>" + queryString + "</li>";
+            $("#searchHistoryView").prepend(appendString);
+        }
+    }
+
+    function showData(data) {
+        $("#table tbody").empty();
+        if(data.code!==200){
+            showMsgPanel(data.msg);
+        }
+        if(data.data==null||data.data.skuList==null||data.data.skuList.length===0){
+            $(".tableNoData").css({display:""});
+            $(".total span strong").text(0);
+            $("#tablePage i:first").text(1);
+            $("#tablePage i:eq(1)").text(1);
+            switchTextUpAndDown("totalNumView","0",500,24);
+            return 0;
+        }else{
+            switchTextUpAndDown("totalNumView",data.data.totalCount+"",500,24);
+            $(".tableNoData").css({display:"none"});
+            $(".total span strong").text(data.data.totalCount);
+            $("#tablePage i:first").text(data.data.pageIndex);
+            $("#tablePage i:eq(1)").text(data.data.pageCount);
+            let skuList=data.data.skuList;
+            for(let i=0;i<skuList.length;i++){
+                let ele=skuList[i];
+                let appendString="<tr>";
+                for(let e in tableStructure){
+                    if(tableStructure[e].show) {
+                        if(tableStructure[e].type==='image'){
+                            appendString += "<td class='hoverShowImgPanel' imgSrc=\'"+ele[e]+"\'><div>悬浮鼠标以查看图片</div></td>";
+                        }else if(tableStructure[e].type==='ID'){
+                            appendString += "<td style='word-break: keep-all;'>" + ele[e] + "</td>";
+                        }else {
+                            appendString += "<td>" + ele[e] + "</td>";
+                        }
+                    }
+                }
+                appendString+="</tr>";
+                $("#table tbody").append(appendString);
+            }
+        }
+    }
+
+    //range min~max
+    function queryByPriceRange(min,max) {
+        $("#actionForm input[name='pageIndex']").attr("value",1);
+        $("#actionForm input[name='minPrice']").attr("value",min);
+        $("#actionForm input[name='maxPrice']").attr("value",max);
+        submitQuery();
+    }
+
+    function changePage(p) {
+        let pageIndex=$("#actionForm input[name='pageIndex']").attr("value");
+        if(pageIndex==null){pageIndex=1;}
+        else{pageIndex=parseInt(pageIndex)}
+        pageIndex+=p;
+        if($("#tablePage i:eq(1)").text().trim()!=="") {
+            let maxPage=parseInt($("#tablePage i:eq(1)").text().trim());
+            if(pageIndex<=maxPage&&pageIndex>0) {
+                $("#actionForm input[name='pageIndex']").attr("value", pageIndex);
+                submitQuery();
+            }
+        }
+    }
+
+    showTableHeader();
+
+</script>
+</html>

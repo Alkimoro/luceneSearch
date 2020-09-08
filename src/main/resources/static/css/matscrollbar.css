@@ -1,0 +1,68 @@
+.matscrollbar::-webkit-scrollbar{
+    width:2px;
+    height:10px;
+}
+.matscrollbar::-webkit-scrollbar-track{
+    opacity: 0;
+}
+.matscrollbar::-webkit-scrollbar-thumb{
+    background: rgba(191, 191, 191, 0.22);
+    border-radius:10px;
+}
+.matscrollbar::-webkit-scrollbar-thumb:hover{
+    background: #bfbfbf;
+}
+.matscrollbar::-webkit-scrollbar-corner{
+    opacity: 0;
+}
+/*---------------------------*/
+.bodymatscrollbar::-webkit-scrollbar{
+    width:6px;
+    height:10px;
+}
+.bodymatscrollbar::-webkit-scrollbar-track{
+    opacity: 0;
+}
+.bodymatscrollbar::-webkit-scrollbar-thumb{
+    background: rgba(191, 191, 191, 0.82);
+    border-radius:10px;
+}
+.bodymatscrollbar::-webkit-scrollbar-thumb:hover{
+    background: rgb(111, 111, 111);
+}
+.bodymatscrollbar::-webkit-scrollbar-corner{
+    opacity: 0;
+}
+
+/*  注意事项
+事实证明，scrollbar上面是不允许用transition的。
+Short answer: No, it‘s not possible to use transition on a ::-webkit-scrollbar
+
+不过网友给了很多hack方案。
+我下面介绍一种。如果不想听可以直接看例子：https://codepen.io/waterplea/pen/dVMopv
+
+解决原理
+
+简单来说就是在元素上加transition，而不是在scrollbar伪类上。
+利用-webkit-scrollbar-thumb的color继承自该元素，该元素transition color的时候，滚动条的color也会transition。剩下的就是用color实现一个滚动条了。
+
+.class::-webkit-scrollbar-thumb{
+    border-radius:  5px;
+    box-shadow: inset 0 0 0 5px; // 用box-shadow模拟滚动条
+}
+.class {
+    -webkit-transition: all 1s;
+    transition: all 1s;
+}
+.class.hide {
+    color: transparent!important;
+}
+
+如果该元素有文字咋办？
+我们用该元素的color属性做滚动条的颜色，那该元素的字体就要换个了。
+
+.class {
+    text-shadow: 0 0 #fff;
+}
+用text-shadow指定字体颜色。
+*/
